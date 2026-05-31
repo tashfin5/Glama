@@ -105,6 +105,12 @@ export default function CheckoutPage() {
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!fullName || fullName.trim() === '') {
+      setError('Please provide your Full Name for shipping.');
+      return;
+    }
+
     setLoading(true);
 
     const orderItems = cart.map(item => ({

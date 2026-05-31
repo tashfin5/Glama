@@ -14,6 +14,7 @@ interface OrderStats {
     isPaid: boolean;
     createdAt: string;
     user?: { name: string };
+    shippingAddress?: { name: string };
   }>;
 }
 
@@ -89,7 +90,7 @@ export default function AdminDashboard() {
                 stats?.recentOrders.map(order => (
                   <tr key={order._id} className="hover:bg-gray-50">
                     <td className="p-4 font-mono text-sm text-gray-600">{order._id.substring(0, 8)}...</td>
-                    <td className="p-4 text-sm font-semibold">{order.user?.name || 'Guest'}</td>
+                    <td className="p-4 text-sm font-semibold">{order.shippingAddress?.name || order.user?.name || 'Guest'}</td>
                     <td className="p-4 text-sm font-bold text-gray-900">৳{order.totalPrice.toFixed(2)}</td>
                     <td className="p-4">
                       {order.isPaid ? (
