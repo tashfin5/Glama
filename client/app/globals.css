@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF3366; /* Vibrant Glama Pink */
+  --color-secondary: #1A1A1A; /* Deeper secondary for contrast */
+  --color-accent: #FFF5F7; /* Soft pink accent */
+  --color-cream: #FFFCF9; /* Warm off-white background */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+body {
+  background-color: var(--color-cream);
+  color: #1a1a1a;
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); filter: brightness(0.8) blur(0px); }
+  50% { transform: scale(1.08) translate(-1%, 1%); filter: brightness(0.6) blur(2px); }
+  100% { transform: scale(1) translate(0, 0); filter: brightness(0.8) blur(0px); }
+}
+
+.animate-kenburns {
+  animation: kenburns 25s ease-in-out infinite alternate;
+}
