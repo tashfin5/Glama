@@ -35,9 +35,9 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     const fetchData = async () => {
       try {
         const [productRes, categoriesRes, brandsRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/products/${id}`),
-          axios.get('http://localhost:5000/api/categories'),
-          axios.get('http://localhost:5000/api/brands')
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands`)
         ]);
         
         setCategories(categoriesRes.data);
@@ -85,7 +85,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setImages([...images, data.url]);
     } catch (error) {
       console.error('Image upload failed', error);
@@ -110,7 +110,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         },
       };
 
-      await axios.put(`http://localhost:5000/api/products/${id}`, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`, {
         name,
         price,
         discountPrice,

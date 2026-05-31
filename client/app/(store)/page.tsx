@@ -17,9 +17,9 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const [productsRes, categoriesRes, offersRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/products?sort=trending'),
-          axios.get('http://localhost:5000/api/categories'),
-          axios.get('http://localhost:5000/api/offers')
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?sort=trending`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers`)
         ]);
         setProducts(productsRes.data);
         setCategories(categoriesRes.data);

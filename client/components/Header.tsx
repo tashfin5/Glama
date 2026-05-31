@@ -39,7 +39,7 @@ const Header = () => {
     // Fetch active offers globally to apply cart discounts
     const fetchOffers = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/offers');
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers`);
         setActiveOffers(data);
       } catch (e) {
         console.error('Failed to load active offers for cart', e);
@@ -94,7 +94,7 @@ const Header = () => {
     // Fetch categories for the header
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/categories');
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
         setCategories(data);
       } catch (error) {
         console.error("Failed to fetch categories for header", error);
@@ -146,7 +146,7 @@ const Header = () => {
     setIsSearching(true);
     const delayDebounceFn = setTimeout(async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/products?keyword=${searchTerm}`);
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${searchTerm}`);
         setPredictiveResults(data.slice(0, 5));
         setShowDropdown(true);
       } catch (error) {

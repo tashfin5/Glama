@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import ProductCard from '@/components/ProductCard';
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const q = searchParams.get('q'); // Gets the 'q' from /search?q=snail
   
@@ -16,7 +16,7 @@ export default function SearchPage() {
       setLoading(true);
       try {
         // Fetch from our newly updated backend route
-        const { data } = await axios.get(`http://localhost:5000/api/products?keyword=${q || ''}`);
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${q || ''}`);
         setProducts(data);
         setLoading(false);
       } catch (error) {
@@ -68,5 +68,13 @@ export default function SearchPage() {
 
       </div>
     </main>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div></div>}>
+      <SearchContent />
+    </Suspense>
   );
 }

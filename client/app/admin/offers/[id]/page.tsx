@@ -43,8 +43,8 @@ export default function EditOfferPage({ params }: { params: Promise<{ id: string
     const fetchData = async () => {
       try {
         const [offerRes, productsRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/offers/${id}`),
-          axios.get('http://localhost:5000/api/products')
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/${id}`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`)
         ]);
         
         const data = offerRes.data;
@@ -113,7 +113,7 @@ export default function EditOfferPage({ params }: { params: Promise<{ id: string
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setImage(data.url);
       toast.success('Image uploaded successfully');
     } catch (error) {
@@ -140,7 +140,7 @@ export default function EditOfferPage({ params }: { params: Promise<{ id: string
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setMobileImage(data.url);
       toast.success('Mobile Image uploaded successfully');
     } catch (error) {
@@ -157,7 +157,7 @@ export default function EditOfferPage({ params }: { params: Promise<{ id: string
 
     try {
       await axios.put(
-        `http://localhost:5000/api/offers/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/${id}`,
         { 
           title, 
           description, 

@@ -49,9 +49,9 @@ function CategoryContent({ slug }: { slug: string }) {
         // 0. Handle "All Products" special case
         if (slug.toLowerCase() === 'all') {
           setCategory({ name: 'All Products', slug: 'all' });
-          const categoriesRes = await axios.get('http://localhost:5000/api/categories');
+          const categoriesRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
           setAllCategories(categoriesRes.data);
-          let url = `http://localhost:5000/api/products?sort=${sortBy}`;
+          let url = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?sort=${sortBy}`;
           if (debouncedMinPrice > 0) url += `&minPrice=${debouncedMinPrice}`;
           if (debouncedMaxPrice < 10000) url += `&maxPrice=${debouncedMaxPrice}`;
           
@@ -62,7 +62,7 @@ function CategoryContent({ slug }: { slug: string }) {
         }
 
         // 1. Fetch all categories to find the matching one by slug
-        const categoriesRes = await axios.get('http://localhost:5000/api/categories');
+        const categoriesRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
         setAllCategories(categoriesRes.data);
         const foundCategory = categoriesRes.data.find(
           (c: any) => c.slug?.toLowerCase() === slug.toLowerCase()
@@ -70,7 +70,7 @@ function CategoryContent({ slug }: { slug: string }) {
 
         if (!foundCategory) {
           // If no precise category exists in DB yet, search products by keyword match as a smart fallback
-          const productsRes = await axios.get(`http://localhost:5000/api/products?keyword=${slug}`);
+          const productsRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?keyword=${slug}`);
           setProducts(productsRes.data);
           setCategory({ name: slug.charAt(0).toUpperCase() + slug.slice(1), slug });
           setLoading(false);
@@ -80,7 +80,7 @@ function CategoryContent({ slug }: { slug: string }) {
         setCategory(foundCategory);
 
         // 2. Fetch products and filter using backend API
-        let url = `http://localhost:5000/api/products?category=${foundCategory._id}&sort=${sortBy}`;
+        let url = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?category=${foundCategory._id}&sort=${sortBy}`;
         if (debouncedMinPrice > 0) url += `&minPrice=${debouncedMinPrice}`;
         if (debouncedMaxPrice < 10000) url += `&maxPrice=${debouncedMaxPrice}`;
         

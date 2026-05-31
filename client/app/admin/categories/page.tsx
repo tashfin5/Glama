@@ -29,7 +29,7 @@ export default function AdminCategoriesPage() {
 
   const fetchCategories = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/categories');
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`);
       setCategories(data);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -75,7 +75,7 @@ export default function AdminCategoriesPage() {
           Authorization: `Bearer ${userInfo?.token}`,
         },
       };
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setImage(data.url);
     } catch (error) {
       console.error('Image upload failed', error);
@@ -91,9 +91,9 @@ export default function AdminCategoriesPage() {
       const config = { headers: { Authorization: `Bearer ${userInfo?.token}` } };
       
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/categories/${editingId}`, { name, slug, image }, config);
+        await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories/${editingId}`, { name, slug, image }, config);
       } else {
-        await axios.post('http://localhost:5000/api/categories', { name, slug, image }, config);
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`, { name, slug, image }, config);
       }
       
       setIsFormOpen(false);
@@ -107,7 +107,7 @@ export default function AdminCategoriesPage() {
   const deleteHandler = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this category?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/categories/${id}`, {
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories/${id}`, {
           headers: { Authorization: `Bearer ${userInfo?.token}` }
         });
         fetchCategories();

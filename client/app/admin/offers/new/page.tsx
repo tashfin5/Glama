@@ -40,7 +40,7 @@ export default function NewOfferPage() {
   React.useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`);
         setAllProducts(data);
       } catch (error) {
         toast.error('Failed to load products');
@@ -65,7 +65,7 @@ export default function NewOfferPage() {
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setImage(data.url);
       toast.success('Image uploaded successfully');
     } catch (error) {
@@ -92,7 +92,7 @@ export default function NewOfferPage() {
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setMobileImage(data.url);
       toast.success('Mobile Image uploaded successfully');
     } catch (error) {
@@ -109,7 +109,7 @@ export default function NewOfferPage() {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/offers',
+        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers`,
         { 
           title, 
           description, 

@@ -47,7 +47,7 @@ function LoginForm() {
 
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/users/register', { 
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/register`, { 
         name, phone, email, password 
       });
       // The screenshot shows "Registered ! Click here to login", meaning we don't automatically log them in
@@ -72,7 +72,7 @@ function LoginForm() {
 
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/users/login', { identifier, password });
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/login`, { identifier, password });
       setCredentials(data);
       toast.success('Login successful!');
       router.push(redirect);

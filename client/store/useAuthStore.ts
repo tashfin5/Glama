@@ -42,7 +42,7 @@ export const useAuthStore = create<AuthState>()(
           const config = {
             headers: { Authorization: `Bearer ${state.userInfo.token}` },
           };
-          const { data } = await axios.post('http://localhost:5000/api/users/wishlist', { productId }, config);
+          const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/wishlist`, { productId }, config);
           set({
             userInfo: {
               ...state.userInfo,

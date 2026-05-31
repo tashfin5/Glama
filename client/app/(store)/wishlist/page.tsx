@@ -22,7 +22,7 @@ export default function WishlistPage() {
         const config = {
           headers: { Authorization: `Bearer ${userInfo.token}` }
         };
-        const { data } = await axios.get('http://localhost:5000/api/users/profile', config);
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/profile`, config);
         setWishlistItems(data.wishlist || []);
       } catch (error) {
         console.error("Error fetching wishlist", error);

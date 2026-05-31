@@ -65,7 +65,7 @@ export default function ProductDetails() {
           Authorization: `Bearer ${userInfo?.token}`,
         },
       };
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setReviewImage(data.image);
       setUploadingImage(false);
     } catch (error) {
@@ -76,7 +76,7 @@ export default function ProductDetails() {
 
   const fetchProduct = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`);
       setProduct(data);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -89,7 +89,7 @@ export default function ProductDetails() {
       const config = {
         headers: { Authorization: `Bearer ${userInfo?.token}` },
       };
-      await axios.post(`http://localhost:5000/api/products/${id}/reviews`, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}/reviews`, {
         rating,
         comment,
         image: reviewImage
@@ -108,7 +108,7 @@ export default function ProductDetails() {
   const deleteReviewHandler = async (reviewId: string) => {
     if (!window.confirm('Are you sure you want to delete this review?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${product._id}/reviews/${reviewId}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${product._id}/reviews/${reviewId}`, {
         headers: { Authorization: `Bearer ${userInfo?.token}` }
       });
       fetchProduct();
@@ -136,11 +136,11 @@ export default function ProductDetails() {
     const fetchData = async () => {
       try {
         // Fetch current product
-        const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`);
         setProduct(data);
 
         // Fetch all products and filter for "similar" (excluding current)
-        const similarRes = await axios.get(`http://localhost:5000/api/products?category=${data.category}`);
+        const similarRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?category=${data.category}`);
         const filteredSimilar = similarRes.data
           .filter((p: any) => p._id !== id)
           .slice(0, 5);

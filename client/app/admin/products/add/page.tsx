@@ -32,8 +32,8 @@ export default function AddProductPage() {
     const fetchData = async () => {
       try {
         const [catRes, brandRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/categories'),
-          axios.get('http://localhost:5000/api/brands')
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/categories`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands`)
         ]);
         setCategories(catRes.data);
         if (catRes.data.length > 0) setCategory(catRes.data[0]._id);
@@ -64,7 +64,7 @@ export default function AddProductPage() {
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setImages([...images, data.url]);
     } catch (error) {
       console.error('Image upload failed', error);
@@ -90,10 +90,10 @@ export default function AddProductPage() {
       };
 
       // 1. Create dummy product
-      const { data: createdProduct } = await axios.post('http://localhost:5000/api/products', {}, config);
+      const { data: createdProduct } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`, {}, config);
 
       // 2. Update dummy product with actual form data
-      await axios.put(`http://localhost:5000/api/products/${createdProduct._id}`, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${createdProduct._id}`, {
         name,
         price,
         discountPrice,

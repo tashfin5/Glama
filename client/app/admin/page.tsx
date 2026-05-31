@@ -25,7 +25,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/orders/stats', {
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/stats`, {
           headers: { Authorization: `Bearer ${userInfo?.token}` }
         });
         setStats(data);

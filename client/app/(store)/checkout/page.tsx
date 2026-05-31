@@ -160,7 +160,7 @@ export default function CheckoutPage() {
           const updatedAddresses = [...(userInfo.addresses || []), newAddr];
 
           const { data: updatedUser } = await axios.put(
-            'http://localhost:5000/api/users/profile',
+            `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/profile`,
             { addresses: updatedAddresses },
             config
           );
@@ -170,7 +170,7 @@ export default function CheckoutPage() {
         }
       }
 
-      const { data } = await axios.post('http://localhost:5000/api/orders', payload, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders`, payload, config);
       setOrderCreated(data);
       clearCart();
     } catch (err: any) {

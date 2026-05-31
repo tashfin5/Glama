@@ -35,7 +35,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
   useEffect(() => {
     const fetchOffer = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/offers/${id}`);
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/${id}`);
         setOffer(data);
       } catch (error) {
         console.error('Failed to load offer details', error);

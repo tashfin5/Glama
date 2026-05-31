@@ -33,7 +33,7 @@ export default function AdminBrandsPage() {
 
   const fetchBrands = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/brands');
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands`);
       setBrands(data);
     } catch (error) {
       console.error('Error fetching brands:', error);
@@ -83,7 +83,7 @@ export default function AdminBrandsPage() {
           Authorization: `Bearer ${userInfo?.token}`,
         },
       };
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
       setImage(data.url);
     } catch (error) {
       console.error('Image upload failed', error);
@@ -101,10 +101,10 @@ export default function AdminBrandsPage() {
       const payload = { name, slug, image, description, isFeatured };
 
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/brands/${editingId}`, payload, config);
+        await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands/${editingId}`, payload, config);
         toast.success('Brand updated');
       } else {
-        await axios.post('http://localhost:5000/api/brands', payload, config);
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands`, payload, config);
         toast.success('Brand created');
       }
       
@@ -120,7 +120,7 @@ export default function AdminBrandsPage() {
     if (window.confirm('Are you sure you want to delete this brand?')) {
       try {
         const config = { headers: { Authorization: `Bearer ${userInfo?.token}` } };
-        await axios.delete(`http://localhost:5000/api/brands/${id}`, config);
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/brands/${id}`, config);
         toast.success('Brand deleted');
         fetchBrands();
       } catch (error: any) {

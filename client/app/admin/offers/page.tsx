@@ -13,7 +13,7 @@ export default function AdminOffersPage() {
 
   const fetchOffers = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/offers/admin', {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/admin`, {
         headers: { Authorization: `Bearer ${userInfo?.token}` },
       });
       setOffers(data);
@@ -32,7 +32,7 @@ export default function AdminOffersPage() {
   const deleteHandler = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this offer?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/offers/${id}`, {
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/offers/${id}`, {
           headers: { Authorization: `Bearer ${userInfo?.token}` },
         });
         toast.success('Offer deleted');

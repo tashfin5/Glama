@@ -33,7 +33,7 @@ export default function AdminOrdersPage() {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/orders', {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders`, {
         headers: {
           Authorization: `Bearer ${userInfo?.token}`,
         },
@@ -53,7 +53,7 @@ export default function AdminOrdersPage() {
   const deliverHandler = async (id: string) => {
     if (window.confirm('Mark this order as delivered?')) {
       try {
-        const { data } = await axios.put(`http://localhost:5000/api/orders/${id}/deliver`, {}, {
+        const { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/${id}/deliver`, {}, {
           headers: { Authorization: `Bearer ${userInfo?.token}` },
         });
         setOrders(orders.map(o => o._id === id ? data : o));
@@ -68,7 +68,7 @@ export default function AdminOrdersPage() {
   const deleteHandler = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/orders/${id}`, {
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/${id}`, {
           headers: { Authorization: `Bearer ${userInfo?.token}` },
         });
         setOrders(orders.filter(o => o._id !== id));

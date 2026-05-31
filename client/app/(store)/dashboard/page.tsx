@@ -76,7 +76,7 @@ export default function UserDashboard() {
           Authorization: `Bearer ${userInfo?.token}`,
         },
       };
-      const { data } = await axios.get('http://localhost:5000/api/orders/myorders', config);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/myorders`, config);
       setOrders(data);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to fetch orders.');
@@ -108,7 +108,7 @@ export default function UserDashboard() {
         payload.password = password;
       }
 
-      const { data } = await axios.put('http://localhost:5000/api/users/profile', payload, config);
+      const { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/profile`, payload, config);
       setCredentials(data);
       setSuccess('Profile updated successfully!');
       toast.success('Profile updated successfully');
@@ -127,7 +127,7 @@ export default function UserDashboard() {
     setSuccess('');
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo?.token}` } };
-      const { data } = await axios.put('http://localhost:5000/api/users/profile', { addresses: newAddresses }, config);
+      const { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/profile`, { addresses: newAddresses }, config);
       setCredentials(data);
       setAddresses(data.addresses || []);
       setSuccess('Addresses updated successfully!');

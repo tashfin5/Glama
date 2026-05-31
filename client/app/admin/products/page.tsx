@@ -23,7 +23,7 @@ export default function AdminProductsPage() {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/products');
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`);
       setProducts(data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -39,7 +39,7 @@ export default function AdminProductsPage() {
   const deleteHandler = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/products/${id}`, {
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`, {
           headers: {
             Authorization: `Bearer ${userInfo?.token}`,
           },

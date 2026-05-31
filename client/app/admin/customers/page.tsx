@@ -21,7 +21,7 @@ export default function AdminCustomersPage() {
 
   const fetchCustomers = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/users', {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users`, {
         headers: {
           Authorization: `Bearer ${userInfo?.token}`,
         },
@@ -37,7 +37,7 @@ export default function AdminCustomersPage() {
   const handleDeleteCustomer = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this customer?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/users/${id}`, {
         headers: { Authorization: `Bearer ${userInfo?.token}` }
       });
       setCustomers(customers.filter((c) => c._id !== id));
