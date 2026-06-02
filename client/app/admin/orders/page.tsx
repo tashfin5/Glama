@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAdminAuthStore } from '../../../store/useAdminAuthStore';
-import { Check, X, Search, Filter } from 'lucide-react';
+import { Check, X, Search, Filter, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
@@ -65,8 +65,23 @@ export default function AdminOrdersPage() {
     }
   };
 
+  const cancelHandler = async (id: string) => {
+    if (window.confirm('Are you sure you want to cancel this order?')) {
+      try {
+        await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/${id}/cancel`, {}, {
+          headers: { Authorization: `Bearer ${userInfo?.token}` },
+        });
+        setOrders(orders.map(o => o._id === id ? { ...o, isCancelled: true } : o));
+        toast.success('Order cancelled successfully');
+      } catch (error) {
+        console.error('Error cancelling order:', error);
+        toast.error('Failed to cancel order');
+      }
+    }
+  };
+
   const deleteHandler = async (id: string) => {
-    if (window.confirm('Are you sure you want to delete this order?')) {
+    if (window.confirm('Are you sure you want to delete this order entirely?')) {
       try {
         await axios.delete(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/${id}`, {
           headers: { Authorization: `Bearer ${userInfo?.token}` },
@@ -166,13 +181,20 @@ export default function AdminOrdersPage() {
                           </span>
                         ) : (
                           <button
-                            onClick={() => deleteHandler(order._id)}
-                            className="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+                            onClick={() => cancelHandler(order._id)}
+                            className="p-1 text-orange-500 hover:text-orange-700 hover:bg-orange-50 rounded transition-colors"
                             title="Cancel Order"
                           >
                             <X className="w-5 h-5" />
                           </button>
                         )}
+                        <button
+                          onClick={() => deleteHandler(order._id)}
+                          className="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+                          title="Delete Order"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button>
                       </div>
                     </td>
                   </tr>
