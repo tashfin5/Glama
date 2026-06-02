@@ -235,6 +235,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                 {uploading ? <Loader2 className="w-6 h-6 text-primary animate-spin" /> : <UploadCloud className="w-6 h-6 text-gray-500 group-hover:text-primary" />}
               </div>
               <p className="text-sm font-bold text-gray-700">{uploading ? 'Uploading...' : 'Click to upload image'}</p>
+              <p className="text-xs text-gray-500 mt-2">Recommended resolution: 800x800px (1:1)</p>
             </label>
 
             {images.length > 0 && (

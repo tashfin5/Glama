@@ -275,6 +275,7 @@ export default function AdminBrandsPage() {
                     <input type="file" className="hidden" onChange={handleImageUpload} accept="image/*" />
                   </label>
                 </div>
+                <p className="text-xs text-gray-500 mt-2">Recommended resolution: 800x800px (1:1)</p>
                 {image && (
                   <div className="mt-3">
                     <img src={image} alt="Preview" className="h-16 object-contain border border-gray-100 rounded-md p-1" />

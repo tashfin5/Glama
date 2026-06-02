@@ -158,19 +158,22 @@ export default function AdminCategoriesPage() {
             </div>
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Category Image (Optional)</label>
-              <div className="flex items-center gap-4">
-                {image && (
-                  <div className="relative w-16 h-16 border border-gray-200 rounded-md overflow-hidden">
-                    <img src={image} alt="Preview" className="w-full h-full object-cover" />
-                    <button type="button" onClick={() => setImage('')} className="absolute top-0 right-0 bg-red-500 text-white rounded-bl-md p-0.5 hover:bg-red-600">
-                      <X className="w-3 h-3" />
-                    </button>
-                  </div>
-                )}
-                <label className="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors">
-                  <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={uploading} />
-                  {uploading ? 'Uploading...' : 'Upload Image'}
-                </label>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  {image && (
+                    <div className="relative w-16 h-16 border border-gray-200 rounded-md overflow-hidden">
+                      <img src={image} alt="Preview" className="w-full h-full object-cover" />
+                      <button type="button" onClick={() => setImage('')} className="absolute top-0 right-0 bg-red-500 text-white rounded-bl-md p-0.5 hover:bg-red-600">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  )}
+                  <label className="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors">
+                    <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={uploading} />
+                    {uploading ? 'Uploading...' : 'Upload Image'}
+                  </label>
+                </div>
+                <p className="text-xs text-gray-500">Recommended resolution: 800x800px (1:1)</p>
               </div>
             </div>
             <div className="flex items-center gap-3 mt-4">
