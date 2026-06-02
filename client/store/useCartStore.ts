@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import toast from 'react-hot-toast';
 
 // Define what a single item in our cart looks like
 export interface CartItem {
@@ -103,6 +104,8 @@ export const useCartStore = create<CartState>()(
           // If new, add it to the array
           set({ cart: [...cart, { ...item, quantity: finalQuantity }] });
         }
+        
+        toast.success("Added to bag");
       },
 
       // Remove specific item

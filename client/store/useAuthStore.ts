@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 interface User {
   _id: string;
@@ -49,6 +50,11 @@ export const useAuthStore = create<AuthState>()(
               wishlist: data.wishlist
             }
           });
+          if (data.wishlist.includes(productId)) {
+            toast.success("Added to wishlist");
+          } else {
+            toast.success("Removed from wishlist");
+          }
         } catch (error) {
           console.error('Failed to toggle wishlist:', error);
         }
