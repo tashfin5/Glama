@@ -289,7 +289,7 @@ export default function ProductDetails() {
                         }
                         toggleWishlist(product._id);
                       }}
-                      className="w-14 h-14 shrink-0 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-all bg-white shadow-sm"
+                      className="w-14 h-14 shrink-0 border border-gray-200 rounded-full flex items-center justify-center text-gray-800 hover:text-primary hover:border-primary transition-all bg-white shadow-sm"
                     >
                       <Heart className={`w-6 h-6 ${isWishlisted ? 'fill-primary text-primary' : ''}`} />
                     </button>

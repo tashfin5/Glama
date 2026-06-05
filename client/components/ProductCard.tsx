@@ -131,7 +131,7 @@ const ProductCard = ({ id, slug, brand, name, price, discountPrice, imageUrl, on
             }
             toggleWishlist(id);
           }} 
-          className="absolute top-3 right-3 text-gray-400 hover:text-primary transition-colors z-20 bg-white/70 backdrop-blur-md rounded-full p-2 shadow-sm hover:shadow-md"
+          className="absolute top-3 right-3 text-gray-800 hover:text-primary transition-colors z-20 bg-white/70 backdrop-blur-md rounded-full p-2 shadow-sm hover:shadow-md"
         >
           <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-primary text-primary' : ''}`} />
         </button>
