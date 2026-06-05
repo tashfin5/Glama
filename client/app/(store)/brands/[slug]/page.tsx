@@ -72,7 +72,7 @@ export default function BrandDetailsPage({ params }: { params: Promise<{ slug: s
           
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
             {/* Brand Logo */}
-            <div className="w-40 h-40 md:w-56 md:h-56 shrink-0 bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex items-center justify-center overflow-hidden">
+            <div className="w-40 h-40 md:w-56 md:h-56 shrink-0 bg-[#F7F4D4] border border-gray-100 rounded-3xl p-6 shadow-sm flex items-center justify-center overflow-hidden">
               {brand.image ? (
                 <img src={brand.image} alt={brand.name} className="w-full h-full object-contain" />
               ) : (

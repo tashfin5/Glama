@@ -26,18 +26,18 @@
   --theme-secondary: #f9fafb;
   --theme-accent: #1A0806;
   --theme-cream: #1A0806;
-  --theme-white: #3A0D07;
+  --theme-white: #2A0A05;
 
-  --theme-gray-50: #111827;
-  --theme-gray-100: #1f2937;
-  --theme-gray-200: #374151;
-  --theme-gray-300: #4b5563;
-  --theme-gray-400: #6b7280;
-  --theme-gray-500: #9ca3af;
-  --theme-gray-600: #d1d5db;
-  --theme-gray-700: #e5e7eb;
-  --theme-gray-800: #f3f4f6;
-  --theme-gray-900: #f9fafb;
+  --theme-gray-50: #1F0907;
+  --theme-gray-100: #2E0D0B;
+  --theme-gray-200: #40120F;
+  --theme-gray-300: #571A15;
+  --theme-gray-400: #75241C;
+  --theme-gray-500: #9C3227;
+  --theme-gray-600: #C94D3F;
+  --theme-gray-700: #DF8076;
+  --theme-gray-800: #EBB8B2;
+  --theme-gray-900: #FAF8E1;
 }
 
 @theme {

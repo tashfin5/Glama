@@ -140,7 +140,7 @@ function CategoryContent({ slug }: { slug: string }) {
           <div className="absolute bottom-0 left-0 -ml-10 -mb-10 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
           
           {category?.image && (
-            <div className="w-20 h-20 md:w-28 md:h-28 bg-white rounded-full p-1.5 overflow-hidden flex-shrink-0 flex items-center justify-center shadow-lg relative z-10 ring-4 ring-white/50">
+            <div className="w-20 h-20 md:w-28 md:h-28 bg-[#F7F4D4] rounded-full p-1.5 overflow-hidden flex-shrink-0 flex items-center justify-center shadow-lg relative z-10 ring-4 ring-white/50">
               <img src={category.image} alt={category.name} className="w-full h-full object-cover rounded-full mix-blend-multiply" />
             </div>
           )}

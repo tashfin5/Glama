@@ -109,7 +109,7 @@ export default function Home() {
                 onClick={() => handleCategoryClick(item._id)}
                 className="flex flex-col items-center group cursor-pointer w-24 md:w-32"
               >
-                <div className={`w-20 h-20 md:w-28 md:h-28 bg-white rounded-full border transition-all duration-300 p-1 mb-3 shadow-sm flex items-center justify-center overflow-hidden ${
+                <div className={`w-20 h-20 md:w-28 md:h-28 bg-[#F7F4D4] rounded-full border transition-all duration-300 p-1 mb-3 shadow-sm flex items-center justify-center overflow-hidden ${
                   isActive 
                     ? 'border-primary ring-2 ring-primary ring-offset-2 scale-105' 
                     : 'border-gray-200 group-hover:border-primary group-hover:scale-105'
