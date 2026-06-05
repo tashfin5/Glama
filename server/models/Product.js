@@ -11,6 +11,7 @@ const reviewSchema = new mongoose.Schema({
 const productSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
   name: { type: String, required: true, trim: true },
+  slug: { type: String, unique: true, index: true },
   brand: { type: String, default: '' },
   description: { type: String, required: true },
   price: { type: Number, required: true, default: 0 },
@@ -25,5 +26,25 @@ const productSchema = new mongoose.Schema({
   rating: { type: Number, required: true, default: 0 },
   numReviews: { type: Number, required: true, default: 0 }
 }, { timestamps: true });
+
+// Auto-generate slug before saving
+productSchema.pre('save', function() {
+  if (!this.isModified('name')) {
+    return;
+  }
+  
+  // Generate basic slug
+  let slug = this.name.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+    
+  if (this.isNew) {
+    const shortId = Math.random().toString(36).substring(2, 6);
+    this.slug = `${slug}-${shortId}`;
+  } else if (!this.slug) {
+    const shortId = Math.random().toString(36).substring(2, 6);
+    this.slug = `${slug}-${shortId}`;
+  }
+});
 
 module.exports = mongoose.model('Product', productSchema);

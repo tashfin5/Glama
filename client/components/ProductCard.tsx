@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 
 interface ProductProps {
   id: string;
+  slug?: string;
   brand: string;
   name: string;
   price: number;
@@ -17,7 +18,7 @@ interface ProductProps {
   onRemove?: (id: string) => void;
 }
 
-const ProductCard = ({ id, brand, name, price, discountPrice, imageUrl, onRemove }: ProductProps) => {
+const ProductCard = ({ id, slug, brand, name, price, discountPrice, imageUrl, onRemove }: ProductProps) => {
   const router = useRouter();
   // Pull the addToCart function and offers from Zustand
   const { addToCart, activeOffers } = useCartStore();
@@ -90,7 +91,7 @@ const ProductCard = ({ id, brand, name, price, discountPrice, imageUrl, onRemove
 
   return (
     <Link 
-      href={`/product/${id}`} 
+      href={`/product/${slug || id}`} 
       className="group flex flex-col bg-white rounded-2xl p-0 border border-gray-100 hover:border-transparent shadow-sm hover:shadow-xl transition-all duration-500 ease-out relative cursor-pointer h-full overflow-hidden hover:-translate-y-1"
     >
       {/* Discount Badge */}

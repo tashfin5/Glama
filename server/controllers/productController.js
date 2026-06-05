@@ -87,12 +87,15 @@ const getProducts = asyncHandler(async (req, res) => {
 // @route   GET /api/products/:id
 // @access  Public
 const getProductById = asyncHandler(async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(404);
-    throw new Error('Product not found');
+  let product;
+  
+  if (mongoose.Types.ObjectId.isValid(req.params.id)) {
+    product = await Product.findById(req.params.id);
   }
-
-  const product = await Product.findById(req.params.id);
+  
+  if (!product) {
+    product = await Product.findOne({ slug: req.params.id });
+  }
 
   if (product) {
     res.json(product);

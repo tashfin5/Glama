@@ -16,7 +16,7 @@ import { useCartStore } from '@/store/useCartStore';
 import { useAuthStore } from '@/store/useAuthStore';
 
 export default function ProductDetails() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [similarProducts, setSimilarProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -77,7 +77,7 @@ export default function ProductDetails() {
 
   const fetchProduct = async () => {
     try {
-      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${slug}`);
       setProduct(data);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -90,7 +90,7 @@ export default function ProductDetails() {
       const config = {
         headers: { Authorization: `Bearer ${userInfo?.token}` },
       };
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}/reviews`, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${slug}/reviews`, {
         rating,
         comment,
         image: reviewImage
@@ -137,13 +137,13 @@ export default function ProductDetails() {
     const fetchData = async () => {
       try {
         // Fetch current product
-        const { data } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`);
+        const { data } = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${slug}`);
         setProduct(data);
 
         // Fetch all products and filter for "similar" (excluding current)
         const similarRes = await cachedGet(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?category=${data.category}`);
         const filteredSimilar = similarRes.data
-          .filter((p: any) => p._id !== id)
+          .filter((p: any) => p.slug !== slug && p._id !== slug)
           .slice(0, 5);
         setSimilarProducts(filteredSimilar);
 
@@ -153,8 +153,8 @@ export default function ProductDetails() {
         setLoading(false);
       }
     };
-    if (id) fetchData();
-  }, [id]);
+    if (slug) fetchData();
+  }, [slug]);
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-white">
@@ -483,6 +483,7 @@ export default function ProductDetails() {
               <ProductCard 
                 key={p._id}
                 id={p._id}
+                slug={p.slug}
                 brand={p.brand}
                 name={p.name}
                 price={p.price}

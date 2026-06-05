@@ -205,7 +205,7 @@ const Header = () => {
                 {predictiveResults.map((product) => (
                   <Link 
                     key={product._id} 
-                    href={`/product/${product._id}`}
+                    href={`/product/${product.slug || product._id}`}
                     onClick={() => setShowDropdown(false)}
                     className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0"
                   >
@@ -293,7 +293,7 @@ const Header = () => {
                 {predictiveResults.map((product) => (
                   <Link 
                     key={product._id} 
-                    href={`/product/${product._id}`}
+                    href={`/product/${product.slug || product._id}`}
                     onClick={() => { setShowDropdown(false); setIsMobileMenuOpen(false); }}
                     className="flex items-center gap-3 p-3 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0"
                   >

@@ -117,6 +117,7 @@ export default function BrandDetailsPage({ params }: { params: Promise<{ slug: s
               <ProductCard 
                 key={product._id}
                 id={product._id}
+                slug={product.slug}
                 brand={product.brand}
                 name={product.name}
                 price={product.price}

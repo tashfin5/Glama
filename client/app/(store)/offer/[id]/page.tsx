@@ -101,7 +101,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
               {offer.products.map((product: any) => (
-                <ProductCard key={product._id} id={product._id} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
+                <ProductCard key={product._id} id={product._id} slug={product.slug} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
               ))}
             </div>
           </section>
@@ -123,7 +123,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {offer.bogoBuyProducts?.map((product: any) => (
-                    <ProductCard key={product._id} id={product._id} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
+                    <ProductCard key={product._id} id={product._id} slug={product.slug} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
                   ))}
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {offer.bogoGetProducts?.map((product: any) => (
-                    <ProductCard key={product._id} id={product._id} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
+                    <ProductCard key={product._id} id={product._id} slug={product.slug} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
                   ))}
                 </div>
               </div>
@@ -181,7 +181,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
                       <div className="flex gap-6 min-w-max">
                         {bundle.products?.map((product: any) => (
                           <div key={product._id} className="w-48 shrink-0">
-                            <ProductCard id={product._id} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
+                            <ProductCard id={product._id} slug={product.slug} brand={product.brand} name={product.name} price={product.price} discountPrice={product.discountPrice} imageUrl={product.images?.[0]} />
                           </div>
                         ))}
                       </div>
