@@ -110,5 +110,5 @@ main {
 }
 
 .dark .gold-gradient-bg {
-  background: linear-gradient(135deg, #D4AF37 0%, #FBF5B7 40%, #FFDF73 60%, #D4AF37 100%) !important;
+  background: linear-gradient(135deg, #D4AF37 0%, #E5C158 30%, #FFDF73 50%, #E5C158 70%, #D4AF37 100%) !important;
 }
