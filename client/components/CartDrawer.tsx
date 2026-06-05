@@ -129,7 +129,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
         {/* Footer / Checkout Button */}
         {cart.length > 0 && (
-          <div className="p-5 bg-gray-50 border-t border-gray-100 space-y-4">
+          <div className="p-5 bg-white border-t border-gray-100 space-y-4">
             <div className="flex items-center justify-between text-gray-800">
               <span className="font-bold">Subtotal</span>
               <span className="font-bold">৳{subtotal}</span>
