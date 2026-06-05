@@ -123,7 +123,7 @@ export default function Home() {
                   )}
                 </div>
                 <span className={`text-[11px] md:text-[12px] font-medium text-center uppercase tracking-widest transition-colors ${
-                  isActive ? 'text-primary' : 'text-gray-500 group-hover:text-gray-900'
+                  isActive ? 'text-gray-900 font-bold' : 'text-gray-900/70 group-hover:text-gray-900'
                 }`}>{item.name}</span>
               </div>
             );
