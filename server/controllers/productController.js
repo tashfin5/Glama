@@ -142,12 +142,14 @@ const updateProduct = asyncHandler(async (req, res) => {
     discountPrice,
     skinType,
     tags,
+    slug,
   } = req.body;
 
   const product = await Product.findById(req.params.id);
 
   if (product) {
     product.name = name || product.name;
+    if (slug) product.slug = slug;
     product.price = price || product.price;
     product.description = description || product.description;
     product.images = images || product.images;

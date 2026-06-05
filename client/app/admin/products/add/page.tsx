@@ -9,6 +9,8 @@ import { useAdminAuthStore } from '../../../../store/useAdminAuthStore';
 
 export default function AddProductPage() {
   const [name, setName] = useState('');
+  const [slug, setSlug] = useState('');
+  const [isSlugManuallyEdited, setIsSlugManuallyEdited] = useState(false);
   const [price, setPrice] = useState(0);
   const [discountPrice, setDiscountPrice] = useState(0);
   const [stock, setStock] = useState(0);
@@ -46,6 +48,13 @@ export default function AddProductPage() {
     };
     fetchData();
   }, []);
+
+  // Handle Slug auto-generation
+  React.useEffect(() => {
+    if (!isSlugManuallyEdited && name) {
+      setSlug(name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''));
+    }
+  }, [name, isSlugManuallyEdited]);
 
   // Handle Cloudinary Image Upload
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,6 +104,7 @@ export default function AddProductPage() {
       // 2. Update dummy product with actual form data
       await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${createdProduct._id}`, {
         name,
+        slug,
         price,
         discountPrice,
         stock,
@@ -141,6 +151,11 @@ export default function AddProductPage() {
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Product Name <span className="text-red-500">*</span></label>
               <input type="text" required value={name} onChange={(e) => setName(e.target.value)} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:border-primary outline-none" placeholder="e.g. Advanced Snail 96 Mucin Power Essence" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-1">Product Slug <span className="text-red-500">*</span></label>
+              <input type="text" required value={slug} onChange={(e) => { setSlug(e.target.value); setIsSlugManuallyEdited(true); }} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:border-primary outline-none font-mono text-sm" placeholder="e.g. advanced-snail-96-mucin-power-essence" />
             </div>
 
             <div>

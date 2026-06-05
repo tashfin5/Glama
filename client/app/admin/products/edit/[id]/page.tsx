@@ -11,6 +11,8 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
   const { id } = React.use(params);
   
   const [name, setName] = useState('');
+  const [slug, setSlug] = useState('');
+  const [isSlugManuallyEdited, setIsSlugManuallyEdited] = useState(false);
   const [price, setPrice] = useState(0);
   const [discountPrice, setDiscountPrice] = useState(0);
   const [stock, setStock] = useState(0);
@@ -45,6 +47,8 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         
         const p = productRes.data;
         setName(p.name || '');
+        setSlug(p.slug || '');
+        setIsSlugManuallyEdited(!!p.slug);
         setPrice(p.price || 0);
         setDiscountPrice(p.discountPrice || 0);
         setStock(p.stock || 0);
@@ -67,6 +71,13 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     };
     fetchData();
   }, [id, router]);
+
+  // Handle Slug auto-generation
+  useEffect(() => {
+    if (!isSlugManuallyEdited && name) {
+      setSlug(name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''));
+    }
+  }, [name, isSlugManuallyEdited]);
 
   // Handle Cloudinary Image Upload
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,6 +123,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
 
       await axios.put(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/${id}`, {
         name,
+        slug,
         price,
         discountPrice,
         stock,
@@ -162,6 +174,11 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Product Name <span className="text-red-500">*</span></label>
               <input type="text" required value={name} onChange={(e) => setName(e.target.value)} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:border-primary outline-none" placeholder="e.g. Advanced Snail 96 Mucin Power Essence" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-1">Product Slug <span className="text-red-500">*</span></label>
+              <input type="text" required value={slug} onChange={(e) => { setSlug(e.target.value); setIsSlugManuallyEdited(true); }} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:border-primary outline-none font-mono text-sm" placeholder="e.g. advanced-snail-96-mucin-power-essence" />
             </div>
 
             <div>
