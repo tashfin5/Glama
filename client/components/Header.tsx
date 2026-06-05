@@ -346,7 +346,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block bg-[#781B0F] border-t border-accent/10 shadow-sm">
+        <div className="hidden lg:block bg-primary-light border-t border-accent/10 shadow-sm">
           <nav className="container mx-auto px-4 py-4 flex justify-center space-x-12 xl:space-x-16 text-[11px] font-medium uppercase text-accent/80 tracking-[0.2em]">
             {categories.map((cat) => (
               <Link 

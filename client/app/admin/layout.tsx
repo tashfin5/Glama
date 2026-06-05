@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Package, ShoppingCart, Users, Settings, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Package, ShoppingCart, Users, Settings, LogOut, Menu, X, Moon, Sun } from 'lucide-react';
 import { useAdminAuthStore } from '../../store/useAdminAuthStore';
 import { useAdminUIStore } from '@/store/useAdminUIStore';
 import { useEffect, useState } from 'react';
@@ -14,13 +14,31 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { pageTitle } = useAdminUIStore();
   const [mounted, setMounted] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     if (!userInfo || userInfo.role !== 'admin') {
       router.push('/admin/login');
     }
+    
+    // Check initial theme
+    if (typeof document !== 'undefined') {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    }
   }, [userInfo, router]);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDark(true);
+    }
+  };
 
   const handleLogout = () => {
     logout();
@@ -131,9 +149,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </h1>
           </div>
           <div className="flex items-center space-x-4">
-             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
-               A
-             </div>
+            <button onClick={toggleTheme} className="p-2 text-gray-400 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center group">
+              {isDark ? <Sun size={20} className="group-hover:scale-110 transition-transform" /> : <Moon size={20} className="group-hover:scale-110 transition-transform" />}
+            </button>
+            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shadow-md">
+              A
+            </div>
           </div>
         </header>
 
