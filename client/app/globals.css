@@ -24,15 +24,15 @@
   --theme-primary: #D4AF37;
   --theme-primary-light: #FFDF73;
   --theme-secondary: #E5C158;
-  --theme-accent: #000000;
-  --theme-cream: #000000;
-  --theme-white: #161616;
+  --theme-accent: #0f0f0f;
+  --theme-cream: #0f0f0f;
+  --theme-white: #1a1a1a;
 
-  --theme-gray-50: #111111;
-  --theme-gray-100: #1a1a1a;
-  --theme-gray-200: #262626;
-  --theme-gray-300: #404040;
-  --theme-gray-400: #525252;
+  --theme-gray-50: #222222;
+  --theme-gray-100: #2c2c2c;
+  --theme-gray-200: #3a3a3a;
+  --theme-gray-300: #4a4a4a;
+  --theme-gray-400: #5c5c5c;
   --theme-gray-500: #a3a3a3;
   --theme-gray-600: #d4d4d4;
   --theme-gray-700: #e5e5e5;
