@@ -182,7 +182,7 @@ const ProductCard = ({ id, slug, brand, name, price, discountPrice, imageUrl, on
             className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm relative z-20 group/btn ${
               isAdded 
                 ? 'bg-green-500 text-white border-green-500 scale-110' 
-                : 'bg-cream border border-gray-200 text-gray-600 hover:bg-gray-900 hover:text-white hover:border-gray-900'
+                : 'bg-cream border border-primary/30 text-primary hover:bg-primary hover:text-white hover:border-primary'
             }`}
           >
             {isAdded ? (
