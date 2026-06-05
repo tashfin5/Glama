@@ -488,8 +488,8 @@ export default function UserDashboard() {
                                 {order.orderItems.map((item: any, idx: number) => (
                                   <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-2xl border border-gray-50">
                                     <div className="flex items-center gap-3">
-                                      <div className="w-10 h-10 bg-gray-50 rounded-lg overflow-hidden border border-gray-100 flex-shrink-0 flex items-center justify-center">
-                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover mix-blend-multiply" />
+                                      <div className="w-10 h-10 bg-white rounded-lg overflow-hidden border border-gray-100 flex-shrink-0 flex items-center justify-center">
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                       </div>
                                       <div>
                                         <span className="font-bold text-gray-800 text-xs leading-tight line-clamp-1">{item.name}</span>

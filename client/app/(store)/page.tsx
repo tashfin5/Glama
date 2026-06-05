@@ -115,7 +115,7 @@ export default function Home() {
                     : 'border-gray-200 group-hover:border-primary group-hover:scale-105'
                 }`}>
                   {item.image ? (
-                     <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-full mix-blend-multiply" />
+                     <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-full" />
                   ) : (
                      <div className="w-full h-full bg-gray-50 rounded-full flex items-center justify-center text-primary/50 font-serif text-2xl uppercase">
                         {item.name.charAt(0)}

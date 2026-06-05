@@ -437,8 +437,8 @@ export default function CheckoutPage() {
                 {cart.map((item) => (
                   <div key={item._id} className="flex justify-between items-start text-sm">
                     <div className="flex gap-3">
-                      <div className="w-12 h-12 bg-gray-50 rounded-md border border-gray-100 flex-shrink-0 flex items-center justify-center overflow-hidden">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover mix-blend-multiply" />
+                      <div className="w-12 h-12 bg-white rounded-md border border-gray-100 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex flex-col">
                         <span className="font-bold text-gray-800 line-clamp-1 leading-tight">{item.name}</span>
