@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdminAuthStore } from '../../../store/useAdminAuthStore';
-import { Lock, Mail, ArrowRight } from 'lucide-react';
+import { Lock, Mail, ArrowRight, Sun, Moon } from 'lucide-react';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -14,11 +14,47 @@ export default function AdminLogin() {
   const router = useRouter();
   const { userInfo, setCredentials } = useAdminAuthStore();
 
+  const [isHydrated, setIsHydrated] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
   useEffect(() => {
-    if (userInfo && userInfo.role === 'admin') {
+    setIsHydrated(useAdminAuthStore.persist.hasHydrated());
+    const unsub = useAdminAuthStore.persist.onFinishHydration(() => setIsHydrated(true));
+    
+    if (typeof document !== 'undefined') {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    }
+    
+    return () => {
+      if (unsub) unsub();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isHydrated && userInfo && userInfo.role === 'admin') {
       router.push('/admin');
     }
-  }, [userInfo, router]);
+  }, [isHydrated, userInfo, router]);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDark(true);
+    }
+  };
+
+  if (!isHydrated || (userInfo && userInfo.role === 'admin')) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,7 +76,14 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans relative">
+      {/* Theme Toggle */}
+      <div className="absolute top-6 right-6">
+        <button onClick={toggleTheme} className="p-2 text-gray-400 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center group bg-white shadow-sm border border-gray-100">
+          {isDark ? <Sun size={20} className="group-hover:scale-110 transition-transform" /> : <Moon size={20} className="group-hover:scale-110 transition-transform" />}
+        </button>
+      </div>
+
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-serif font-medium text-gray-900 tracking-widest">
           LUMIÈRE<span className="text-primary tracking-normal font-medium ml-1">ADMIN</span>

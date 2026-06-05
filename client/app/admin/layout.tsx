@@ -15,18 +15,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [mounted, setMounted] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    if (!userInfo || userInfo.role !== 'admin') {
-      router.push('/admin/login');
-    }
+    setIsHydrated(useAdminAuthStore.persist.hasHydrated());
+    const unsub = useAdminAuthStore.persist.onFinishHydration(() => setIsHydrated(true));
     
     // Check initial theme
     if (typeof document !== 'undefined') {
       setIsDark(document.documentElement.classList.contains('dark'));
     }
-  }, [userInfo, router]);
+    
+    return () => {
+      if (unsub) unsub();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isHydrated && (!userInfo || userInfo.role !== 'admin')) {
+      router.push('/admin/login');
+    }
+  }, [isHydrated, userInfo, router]);
 
   const toggleTheme = () => {
     if (isDark) {
@@ -54,7 +64,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   // Prevent flash of unauthenticated content while redirecting
-  if (!userInfo || userInfo.role !== 'admin') {
+  if (!isHydrated || !userInfo || userInfo.role !== 'admin') {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -83,9 +93,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed md:static inset-y-0 left-0 z-50 w-64 bg-gray-900 text-white flex flex-col transform transition-transform duration-300 ease-in-out ${
+      <aside className={`fixed md:static inset-y-0 left-0 z-50 w-64 text-white flex flex-col transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-      }`}>
+      }`} style={{ backgroundColor: isDark ? '#050505' : '#111827' }}>
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-800">
           <Link href="/" className="text-2xl font-serif font-medium text-white tracking-widest flex-1 text-center">
             LUMIÈRE<span className="text-gray-400 text-xs ml-2 font-light tracking-[0.2em] font-sans">ADMIN</span>
