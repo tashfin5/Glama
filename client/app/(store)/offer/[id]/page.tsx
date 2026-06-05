@@ -114,9 +114,9 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
               <h2 className="text-xl font-serif uppercase tracking-widest text-primary">Buy One, Get One</h2>
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">BOGO Deal</span>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex flex-col md:flex-row justify-center items-start gap-8">
               {/* Buy These */}
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+              <div className={`bg-gray-50 p-6 rounded-xl border border-gray-100 w-full ${offer.bogoBuyProducts?.length === 1 ? 'md:w-auto md:min-w-[320px]' : 'md:flex-1'}`}>
                 <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wider mb-6 flex items-center gap-2">
                   <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> 
                   Buy Any Of These
@@ -131,7 +131,7 @@ export default function OfferDetailsPage({ params }: { params: Promise<{ id: str
               </div>
               
               {/* Get These Free */}
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+              <div className={`bg-gray-50 p-6 rounded-xl border border-gray-100 w-full ${offer.bogoGetProducts?.length === 1 ? 'md:w-auto md:min-w-[320px]' : 'md:flex-1'}`}>
                 <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-6 flex items-center gap-2">
                   <span className="bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> 
                   Get These Free
