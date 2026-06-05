@@ -87,7 +87,7 @@ function LoginForm() {
     <main className="min-h-[70vh] bg-gray-50 flex items-center justify-center py-12 px-4">
       <div className="bg-white rounded-lg shadow-sm border border-gray-100 max-w-md w-full flex flex-col p-8 md:p-10">
         
-        <h2 className="text-2xl font-black text-[#1e293b] mb-6">
+        <h2 className="text-2xl font-black text-gray-900 mb-6">
           {mode === 'register' ? 'Registration' : 'Login'}
         </h2>
 
@@ -99,8 +99,8 @@ function LoginForm() {
         )}
 
         {successMsg && (
-          <div className="bg-[#e9ecef] text-gray-800 p-4 rounded-md text-sm mb-6 flex items-center gap-2 font-medium">
-            <div className="w-5 h-5 bg-[#1e293b] rounded-full flex items-center justify-center text-white font-bold text-xs">!</div>
+          <div className="bg-gray-100 text-gray-800 p-4 rounded-md text-sm mb-6 flex items-center gap-2 font-medium">
+            <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xs">!</div>
             {successMsg} <button type="button" onClick={() => setMode('login')} className="underline hover:text-gray-600">Click here to login</button>
           </div>
         )}
@@ -206,12 +206,12 @@ function LoginForm() {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-[#1e293b] text-white font-bold py-3 rounded-md hover:bg-secondary transition-colors disabled:opacity-50 mt-4"
+              className="w-full bg-primary text-white font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 mt-4"
             >
               Register
             </button>
             <p className="text-center text-sm text-gray-500 mt-4">
-              Already have an account? <button type="button" onClick={() => setMode('login')} className="text-blue-600 font-semibold hover:underline">Login here</button>
+              Already have an account? <button type="button" onClick={() => setMode('login')} className="text-primary font-semibold hover:underline">Login here</button>
             </p>
           </form>
         ) : (
@@ -255,12 +255,12 @@ function LoginForm() {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-[#1e293b] text-white font-bold py-3 rounded-md hover:bg-secondary transition-colors disabled:opacity-50 mt-4"
+              className="w-full bg-primary text-white font-bold py-3 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 mt-4"
             >
               Login
             </button>
             <p className="text-center text-sm text-gray-500 mt-4">
-              Don't have an account? <button type="button" onClick={() => { setMode('register'); setSuccessMsg(''); }} className="text-blue-600 font-semibold hover:underline">Register here</button>
+              Don't have an account? <button type="button" onClick={() => { setMode('register'); setSuccessMsg(''); }} className="text-primary font-semibold hover:underline">Register here</button>
             </p>
           </form>
         )}
