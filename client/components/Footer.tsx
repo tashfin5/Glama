@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-primary shadow-[0_-8px_30px_rgba(0,0,0,0.08)] pt-20 pb-10 text-sm relative z-10">
+    <footer className="gold-gradient-bg shadow-[0_-8px_30px_rgba(0,0,0,0.08)] pt-20 pb-10 text-sm relative z-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
 

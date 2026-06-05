@@ -187,7 +187,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-primary sticky top-0 z-50 shadow-md transition-all duration-300">
+      <header className="w-full gold-gradient-bg sticky top-0 z-50 shadow-md transition-all duration-300">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           
           {/* Left: Mobile Menu & Logo */}

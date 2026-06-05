@@ -22,7 +22,7 @@
 
 .dark {
   --theme-primary: #D4AF37;
-  --theme-primary-light: #FFDF73;
+  --theme-primary-light: #AA771C;
   --theme-secondary: #E5C158;
   --theme-accent: #0f0f0f;
   --theme-cream: #0f0f0f;
@@ -103,4 +103,12 @@ main {
 .dark a.bg-primary:hover {
   background: linear-gradient(135deg, #FBF5B7 0%, #D4AF37 25%, #AA771C 50%, #D4AF37 75%, #FBF5B7 100%) !important;
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.gold-gradient-bg {
+  background-color: var(--theme-primary);
+}
+
+.dark .gold-gradient-bg {
+  background: linear-gradient(135deg, #FBF5B7 0%, #D4AF37 25%, #AA771C 50%, #D4AF37 75%, #FBF5B7 100%) !important;
 }
