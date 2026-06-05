@@ -52,7 +52,7 @@ export default function AdminOffersPage() {
         </div>
         <Link 
           href="/admin/offers/new" 
-          className="bg-primary text-white px-5 py-2.5 rounded-md font-bold uppercase tracking-widest text-sm hover:bg-black transition-colors shadow-md flex items-center gap-2"
+          className="bg-primary text-white px-5 py-2.5 rounded-md font-bold uppercase tracking-widest text-sm hover:bg-secondary transition-colors shadow-md flex items-center gap-2"
         >
           <Plus size={18} /> Add New Offer
         </Link>

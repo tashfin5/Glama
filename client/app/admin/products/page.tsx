@@ -64,7 +64,7 @@ export default function AdminProductsPage() {
         </div>
         <Link 
           href="/admin/products/add" 
-          className="bg-primary text-white px-4 py-2 rounded-md font-medium flex items-center gap-2 hover:bg-black transition-colors shadow-sm"
+          className="bg-primary text-white px-4 py-2 rounded-md font-medium flex items-center gap-2 hover:bg-secondary transition-colors shadow-sm"
         >
           <Plus className="w-5 h-5" />
           Add New Product

@@ -55,7 +55,7 @@ export default function WishlistPage() {
         <div className="bg-white p-12 rounded-3xl border border-gray-100 shadow-xl max-w-md w-full text-center">
           <h2 className="text-2xl font-serif font-medium text-gray-900 mb-2 uppercase tracking-widest">Login Required</h2>
           <p className="text-gray-500 mb-6 font-medium">Please login to view your wishlist.</p>
-          <Link href="/login" className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg block text-center">
+          <Link href="/login" className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-lg block text-center">
             Go to Login
           </Link>
         </div>
@@ -88,7 +88,7 @@ export default function WishlistPage() {
         ) : (
           <div className="bg-white p-12 text-center rounded-3xl border border-gray-100 shadow-sm">
             <p className="text-gray-500 mb-6 font-medium">Your wishlist is completely empty.</p>
-            <Link href="/" className="bg-primary text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-black transition-colors text-xs shadow-md">
+            <Link href="/" className="bg-primary text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-secondary transition-colors text-xs shadow-md">
               Discover Products
             </Link>
           </div>

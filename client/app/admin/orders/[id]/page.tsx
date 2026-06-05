@@ -195,7 +195,7 @@ export default function AdminOrderDetailsPage({ params }: { params: Promise<{ id
                 <button 
                   onClick={markAsPaid}
                   disabled={actionLoading}
-                  className="w-full py-2.5 bg-gray-900 text-white rounded-md font-bold text-sm hover:bg-black transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
+                  className="w-full py-2.5 bg-gray-900 text-white rounded-md font-bold text-sm hover:bg-secondary transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
                 >
                   {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
                   Mark As Paid
@@ -206,7 +206,7 @@ export default function AdminOrderDetailsPage({ params }: { params: Promise<{ id
                 <button 
                   onClick={markAsDelivered}
                   disabled={actionLoading}
-                  className="w-full py-2.5 bg-primary text-white rounded-md font-bold text-sm hover:bg-black transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
+                  className="w-full py-2.5 bg-primary text-white rounded-md font-bold text-sm hover:bg-secondary transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
                 >
                   {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Truck className="w-4 h-4" />}
                   Mark As Delivered

@@ -83,7 +83,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               </div>
               <button 
                 onClick={onClose} 
-                className="w-full max-w-[220px] bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg mt-4 text-xs"
+                className="w-full max-w-[220px] bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-lg mt-4 text-xs"
               >
                 Start Shopping
               </button>
@@ -153,7 +153,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             <Link 
               href="/checkout"
               onClick={onClose}
-              className="w-full bg-primary text-white py-4 rounded-md font-bold uppercase tracking-widest flex items-center justify-center hover:bg-black transition-colors shadow-lg text-center"
+              className="w-full bg-primary text-white py-4 rounded-md font-bold uppercase tracking-widest flex items-center justify-center hover:bg-secondary transition-colors shadow-lg text-center"
             >
               Checkout Now
             </Link>

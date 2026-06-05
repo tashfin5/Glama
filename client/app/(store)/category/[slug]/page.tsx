@@ -114,7 +114,7 @@ function CategoryContent({ slug }: { slug: string }) {
       <div className="min-h-[60vh] flex items-center justify-center p-4">
         <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-xl max-w-md w-full text-center">
           <p className="text-red-500 font-bold mb-4">{error}</p>
-          <Link href="/" className="bg-primary text-white px-6 py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-black transition">
+          <Link href="/" className="bg-primary text-white px-6 py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-secondary transition">
             Back to Home
           </Link>
         </div>

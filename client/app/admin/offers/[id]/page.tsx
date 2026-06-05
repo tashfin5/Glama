@@ -571,7 +571,7 @@ export default function EditOfferPage({ params }: { params: Promise<{ id: string
             <button
               type="submit"
               disabled={saving || uploading}
-              className="bg-primary text-white px-8 py-3 rounded-md font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-md disabled:opacity-50 flex items-center gap-2"
+              className="bg-primary text-white px-8 py-3 rounded-md font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-md disabled:opacity-50 flex items-center gap-2"
             >
               {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
               Update Offer

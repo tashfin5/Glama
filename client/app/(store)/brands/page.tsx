@@ -76,7 +76,7 @@ export default function BrandsPage() {
                   <div className="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden mb-4 relative border border-gray-100 shadow-sm">
                     {brand.image ? (
                       <>
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors z-10" />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-secondary/30 transition-colors z-10" />
                         <img src={brand.image} alt={brand.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       </>
                     ) : (

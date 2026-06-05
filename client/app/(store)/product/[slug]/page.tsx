@@ -364,7 +364,7 @@ export default function ProductDetails() {
                             }
                             setShowReviewForm(true);
                           }}
-                          className="w-full mt-6 bg-secondary text-white py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-black transition-all"
+                          className="w-full mt-6 bg-secondary text-white py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-secondary transition-all"
                         >
                           Write a Review
                         </button>
@@ -419,7 +419,7 @@ export default function ProductDetails() {
                           <button 
                             type="submit" 
                             disabled={uploadingImage}
-                            className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-black transition-all disabled:opacity-50 mt-2"
+                            className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-secondary transition-all disabled:opacity-50 mt-2"
                           >
                             Submit Review
                           </button>

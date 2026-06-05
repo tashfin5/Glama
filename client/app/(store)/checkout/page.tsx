@@ -88,7 +88,7 @@ export default function CheckoutPage() {
           <p className="text-gray-500 mb-6 font-medium">You don't have any products in your cart to checkout.</p>
           <Link
             href="/"
-            className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg block"
+            className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-lg block"
           >
             Start Shopping
           </Link>
@@ -215,7 +215,7 @@ export default function CheckoutPage() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/dashboard"
-              className="flex-1 bg-secondary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors text-center text-sm shadow-md"
+              className="flex-1 bg-secondary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-secondary transition-colors text-center text-sm shadow-md"
             >
               Track Order
             </Link>
@@ -505,7 +505,7 @@ export default function CheckoutPage() {
                 type="submit"
                 form="checkout-form"
                 disabled={loading}
-                className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <Loader2 className="w-5 h-5 animate-spin" />

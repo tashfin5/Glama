@@ -133,7 +133,7 @@ export default function AdminCategoriesPage() {
         </div>
         <button 
           onClick={openAddForm}
-          className="bg-primary text-white px-4 py-2 rounded-md font-medium flex items-center gap-2 hover:bg-black transition-colors shadow-sm"
+          className="bg-primary text-white px-4 py-2 rounded-md font-medium flex items-center gap-2 hover:bg-secondary transition-colors shadow-sm"
         >
           <Plus className="w-5 h-5" />
           Add Category
@@ -180,7 +180,7 @@ export default function AdminCategoriesPage() {
               <button type="button" onClick={() => setIsFormOpen(false)} className="px-4 py-2 bg-gray-100 text-gray-700 border border-gray-300 rounded-md font-bold text-sm hover:bg-gray-200 transition-colors">
                 Cancel
               </button>
-              <button type="submit" disabled={uploading} className="px-4 py-2 bg-primary text-white rounded-md font-bold text-sm hover:bg-black transition-colors disabled:opacity-50">
+              <button type="submit" disabled={uploading} className="px-4 py-2 bg-primary text-white rounded-md font-bold text-sm hover:bg-secondary transition-colors disabled:opacity-50">
                 {isEditing ? 'Update Category' : 'Save Category'}
               </button>
             </div>

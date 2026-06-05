@@ -273,7 +273,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
             <button type="button" onClick={() => router.push('/admin/products')} className="px-4 py-2 bg-white border border-gray-300 rounded-md font-medium text-gray-700 hover:bg-gray-50 transition-colors text-sm">
               Cancel
             </button>
-            <button type="submit" disabled={saving || uploading} className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-black transition-colors shadow-sm flex items-center gap-2 text-sm disabled:opacity-50">
+            <button type="submit" disabled={saving || uploading} className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-secondary transition-colors shadow-sm flex items-center gap-2 text-sm disabled:opacity-50">
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               {saving ? 'Updating...' : 'Update Product'}
             </button>

@@ -235,7 +235,7 @@ export default function UserDashboard() {
           <p className="text-gray-500 mb-6 font-medium">Please login with your phone number to access your account dashboard.</p>
           <Link 
             href="/login" 
-            className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-lg block text-center"
+            className="w-full bg-primary text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-lg block text-center"
           >
             Go to Login
           </Link>
@@ -363,7 +363,7 @@ export default function UserDashboard() {
                     <p className="text-xs text-gray-500 font-medium">Explore premium Korean beauty products trending today.</p>
                   </div>
                 </div>
-                <Link href="/" className="bg-primary text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-md text-center whitespace-nowrap">
+                <Link href="/" className="bg-primary text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-secondary transition-colors shadow-md text-center whitespace-nowrap">
                   Shop Trending
                 </Link>
               </div>
@@ -421,7 +421,7 @@ export default function UserDashboard() {
                   <p className="text-gray-500 font-medium mb-6">You haven't placed any orders yet.</p>
                   <Link 
                     href="/" 
-                    className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-black transition-colors shadow-lg"
+                    className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-colors shadow-lg"
                   >
                     Start Shopping
                   </Link>
@@ -601,7 +601,7 @@ export default function UserDashboard() {
                 <button 
                   type="submit" 
                   disabled={loadingProfile}
-                  className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-black transition-all shadow-md active:scale-95 disabled:opacity-50"
+                  className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-md active:scale-95 disabled:opacity-50"
                 >
                   {loadingProfile ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -617,7 +617,7 @@ export default function UserDashboard() {
                 {!isAddingAddress && (
                   <button 
                     onClick={openAddAddress}
-                    className="text-xs font-bold text-white bg-primary px-4 py-2 rounded hover:bg-black transition-colors uppercase tracking-widest"
+                    className="text-xs font-bold text-white bg-primary px-4 py-2 rounded hover:bg-secondary transition-colors uppercase tracking-widest"
                   >
                     + Add New
                   </button>
@@ -669,7 +669,7 @@ export default function UserDashboard() {
                   </div>
                   <div className="flex gap-4 pt-4">
                     <button type="button" onClick={() => setIsAddingAddress(false)} className="flex-1 bg-white border border-gray-200 text-gray-600 px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-gray-50 transition-all">Cancel</button>
-                    <button type="submit" className="flex-1 bg-primary text-white px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-black transition-all shadow-md active:scale-95">Save Address</button>
+                    <button type="submit" className="flex-1 bg-primary text-white px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-secondary transition-all shadow-md active:scale-95">Save Address</button>
                   </div>
                 </form>
               ) : addresses.length > 0 ? (
@@ -707,7 +707,7 @@ export default function UserDashboard() {
                   <MapPin className="w-10 h-10 text-gray-300 mx-auto" />
                   <h4 className="font-bold text-gray-900 uppercase tracking-wide text-sm">No address saved yet</h4>
                   <p className="text-xs text-gray-500 font-medium leading-relaxed">Save your shipping addresses for faster checkout.</p>
-                  <button onClick={openAddAddress} className="inline-block bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-black transition-colors mt-2 shadow-sm">
+                  <button onClick={openAddAddress} className="inline-block bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-secondary transition-colors mt-2 shadow-sm">
                     Add Address
                   </button>
                 </div>

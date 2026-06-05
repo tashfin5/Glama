@@ -162,7 +162,7 @@ export default function Home() {
             <h3 className="text-2xl font-serif text-gray-900 mb-2 uppercase tracking-wide">No Products Found</h3>
             <p className="text-gray-500 font-medium max-w-md">We couldn't find any products in this category at the moment. Try selecting a different category or check back later.</p>
             {selectedCategoryId && (
-              <button onClick={() => setSelectedCategoryId(null)} className="mt-8 bg-primary text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-1">
+              <button onClick={() => setSelectedCategoryId(null)} className="mt-8 bg-primary text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-secondary transition-all duration-300 shadow-lg hover:-translate-y-1">
                 Clear Filters
               </button>
             )}

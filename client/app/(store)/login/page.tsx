@@ -206,7 +206,7 @@ function LoginForm() {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-[#1e293b] text-white font-bold py-3 rounded-md hover:bg-black transition-colors disabled:opacity-50 mt-4"
+              className="w-full bg-[#1e293b] text-white font-bold py-3 rounded-md hover:bg-secondary transition-colors disabled:opacity-50 mt-4"
             >
               Register
             </button>
@@ -255,7 +255,7 @@ function LoginForm() {
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-[#1e293b] text-white font-bold py-3 rounded-md hover:bg-black transition-colors disabled:opacity-50 mt-4"
+              className="w-full bg-[#1e293b] text-white font-bold py-3 rounded-md hover:bg-secondary transition-colors disabled:opacity-50 mt-4"
             >
               Login
             </button>
