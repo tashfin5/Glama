@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms of Service | Glama Cosmetics',
-  description: 'Terms of Service for Glama Cosmetics',
+  title: 'Terms of Service | Lumière Cosmetics',
+  description: 'Terms of Service for Lumière Cosmetics',
 };
 
 export default function TermsOfServicePage() {
@@ -20,7 +20,7 @@ export default function TermsOfServicePage() {
 
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">1. Acceptance of Terms</h2>
           <p>
-            By accessing or using the Glama Cosmetics website, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services.
+            By accessing or using the Lumière Cosmetics website, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services.
           </p>
 
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">2. Online Store Terms</h2>
@@ -50,7 +50,7 @@ export default function TermsOfServicePage() {
 
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">7. Disclaimer of Warranties; Limitation of Liability</h2>
           <p>
-            We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free. We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable. In no case shall Glama Cosmetics, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind.
+            We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free. We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable. In no case shall Lumière Cosmetics, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind.
           </p>
 
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">8. Changes to Terms of Service</h2>
@@ -60,7 +60,7 @@ export default function TermsOfServicePage() {
           
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">9. Contact Information</h2>
           <p>
-            Questions about the Terms of Service should be sent to us at glamasupport@gmail.com.
+            Questions about the Terms of Service should be sent to us at support@lumiere.com.
           </p>
         </div>
         

@@ -324,7 +324,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: 'glama-cart-storage', // This saves the cart in localStorage so it survives page refreshes!
+      name: 'lumiere-cart-storage', // This saves the cart in localStorage so it survives page refreshes!
     }
   )
 );

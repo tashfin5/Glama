@@ -43,7 +43,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-serif font-medium text-gray-900 tracking-widest">
-          GLAMA<span className="text-primary tracking-normal font-medium ml-1">ADMIN</span>
+          LUMIÈRE<span className="text-primary tracking-normal font-medium ml-1">ADMIN</span>
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600 font-medium">
           Secure Dashboard Access
@@ -71,7 +71,7 @@ export default function AdminLogin() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="focus:ring-primary focus:border-primary block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-3 bg-gray-50 border outline-none transition-colors"
-                  placeholder="admin@glama.com"
+                  placeholder="admin@lumiere.com"
                 />
               </div>
             </div>

@@ -5,7 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 const WhatsAppButton = () => {
   // Replace with actual WhatsApp number in international format without + or spaces
   const phoneNumber = "8801941682148";
-  const message = encodeURIComponent("Hello! I need some help with my Glama Cosmetics order.");
+  const message = encodeURIComponent("Hello! I need some help with my Lumière Cosmetics order.");
 
   return (
     <a

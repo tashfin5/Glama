@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy | Glama Cosmetics',
-  description: 'Privacy Policy for Glama Cosmetics',
+  title: 'Privacy Policy | Lumière Cosmetics',
+  description: 'Privacy Policy for Lumière Cosmetics',
 };
 
 export default function PrivacyPolicyPage() {
@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">1. Information We Collect</h2>
           <p>
-            At Glama Cosmetics, we are committed to protecting your privacy and ensuring you have a positive experience on our website. We collect information you provide directly to us when you create an account, make a purchase, or communicate with us. This may include your name, email address, phone number, shipping and billing addresses, and payment information.
+            At Lumière Cosmetics, we are committed to protecting your privacy and ensuring you have a positive experience on our website. We collect information you provide directly to us when you create an account, make a purchase, or communicate with us. This may include your name, email address, phone number, shipping and billing addresses, and payment information.
           </p>
 
           <h2 className="text-xl font-serif font-medium text-gray-900 mt-10">2. How We Use Your Information</h2>
@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
             If you have any questions about this Privacy Policy, please contact us:
           </p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>By email: glamasupport@gmail.com</li>
+            <li>By email: support@lumiere.com</li>
             <li>By phone: +880 1941 682148</li>
           </ul>
         </div>

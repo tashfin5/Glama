@@ -160,7 +160,7 @@ export default function ProductDetails() {
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="animate-pulse flex flex-col items-center">
         <div className="h-12 w-12 bg-primary/20 rounded-full mb-4"></div>
-        <p className="text-gray-400 font-bold tracking-widest text-xs uppercase">Loading Glama...</p>
+        <p className="text-gray-400 font-bold tracking-widest text-xs uppercase">Loading Lumière...</p>
       </div>
     </div>
   );

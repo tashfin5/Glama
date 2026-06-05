@@ -195,7 +195,7 @@ export default function CheckoutPage() {
             <CheckCircle className="w-12 h-12" />
           </div>
           <h1 className="text-3xl font-serif font-medium text-secondary uppercase tracking-widest mb-2">Order Confirmed!</h1>
-          <p className="text-gray-500 font-medium mb-6">Thank you for shopping with Glama. Your order has been placed successfully.</p>
+          <p className="text-gray-500 font-medium mb-6">Thank you for shopping with Lumière. Your order has been placed successfully.</p>
 
           <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 text-left mb-8 space-y-3">
             <div className="flex justify-between border-b border-gray-200 pb-2">
@@ -518,7 +518,7 @@ export default function CheckoutPage() {
               </button>
 
               <p className="text-center text-[10px] text-gray-400 mt-4 leading-relaxed">
-                By placing your order, you agree to Glama's terms of service and privacy policy.
+                By placing your order, you agree to Lumière's terms of service and privacy policy.
               </p>
             </div>
           </div>

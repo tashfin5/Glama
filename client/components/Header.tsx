@@ -178,7 +178,7 @@ const Header = () => {
               <Menu className="w-6 h-6 text-gray-800" />
             </div>
             <Link href="/" className="text-3xl font-serif font-medium text-primary tracking-widest">
-              GLAMA<span className="text-gray-900">.</span>
+              LUMIÈRE<span className="text-gray-900">.</span>
             </Link>
           </div>
 
@@ -378,7 +378,7 @@ const Header = () => {
       >
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <Link href="/" className="text-2xl font-serif font-medium text-primary tracking-widest" onClick={() => setIsMobileMenuOpen(false)}>
-            GLAMA<span className="text-gray-900">.</span>
+            LUMIÈRE<span className="text-gray-900">.</span>
           </Link>
           <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-500 hover:text-gray-900 transition-colors">
             <X className="w-6 h-6" />

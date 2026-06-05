@@ -17,7 +17,7 @@ const marcellus = Marcellus({
 });
 
 export const metadata: Metadata = {
-  title: "Glama | The K-Beauty Glow Up",
+  title: "Lumière | The K-Beauty Glow Up",
   description: "Your ultimate destination for authentic K-Beauty and premium cosmetics.",
 };
 

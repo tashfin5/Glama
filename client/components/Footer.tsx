@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand & About */}
           <div className="flex flex-col space-y-6">
             <Link href="/" className="text-3xl font-serif font-medium text-primary tracking-widest">
-              GLAMA<span className="text-gray-900">.</span>
+              LUMIÈRE<span className="text-gray-900">.</span>
             </Link>
             <p className="text-gray-800 leading-relaxed font-light tracking-wide">
               Your ultimate destination for authentic K-Beauty and premium cosmetics. We bring the best of global skincare right to your doorstep.
@@ -50,7 +50,7 @@ const Footer = () => {
             <ul className="space-y-4 text-gray-800">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span>Level 4, Glama Tower, Narayanganj, Dhaka, Bangladesh</span>
+                <span>Level 4, Lumière Tower, Narayanganj, Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
@@ -58,7 +58,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <span>glamasupport@gmail.com</span>
+                <span>support@lumiere.com</span>
               </li>
             </ul>
           </div>
@@ -67,7 +67,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-black pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-black text-[10px] uppercase tracking-widest font-medium">
-          <p>&copy; {new Date().getFullYear()} Glama Cosmetics. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Lumière Cosmetics. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>

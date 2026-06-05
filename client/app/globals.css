@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #FF3366; /* Vibrant Glama Pink */
+  --color-primary: #5D1010; /* Rich Maroon */
   --color-secondary: #1A1A1A; /* Deeper secondary for contrast */
-  --color-accent: #FFF5F7; /* Soft pink accent */
-  --color-cream: #FFFCF9; /* Warm off-white background */
+  --color-accent: #FDF6C6; /* Soft cream accent */
+  --color-cream: #FFFBE6; /* Pale yellow cream background */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
