@@ -28,7 +28,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.variable} ${marcellus.variable} font-sans antialiased flex flex-col min-h-screen bg-cream text-gray-900`}>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            try {
+              if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            } catch (_) {}
+          `
+        }} />
+      </head>
+      <body className={`${outfit.variable} ${marcellus.variable} font-sans antialiased flex flex-col min-h-screen bg-cream text-primary`}>
         <Toaster position="top-center" toastOptions={{ duration: 3000, style: { background: '#333', color: '#fff' } }} />
         {children}
       </body>

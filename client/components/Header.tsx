@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, ShoppingBag, User, Heart, Menu, X, Loader2, Package, ChevronDown } from 'lucide-react';
+import { Search, ShoppingBag, User, Heart, Menu, X, Loader2, Package, ChevronDown, Moon, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { useAuthStore } from '@/store/useAuthStore';
 import CartDrawer from './CartDrawer';
@@ -17,6 +17,7 @@ const Header = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [bumpBag, setBumpBag] = useState(false);
   const [bumpWishlist, setBumpWishlist] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const router = useRouter();
 
   const { setActiveOffers, activeOffers } = useCartStore();
@@ -46,7 +47,24 @@ const Header = () => {
       }
     };
     fetchOffers();
+
+    // Check initial theme
+    if (typeof document !== 'undefined') {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    }
   }, [setActiveOffers]);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDark(true);
+    }
+  };
 
   // Typewriter effect state
   const searchPhrases = [
@@ -231,6 +249,16 @@ const Header = () => {
 
           {/* Right: Icons */}
           <div className="flex items-center justify-end lg:w-1/3 space-x-6 sm:space-x-8">
+            <div className="flex flex-col items-center justify-center cursor-pointer group" onClick={toggleTheme}>
+              {isDark ? (
+                <Sun className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+              ) : (
+                <Moon className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+              )}
+              <span className="hidden md:block text-[9px] uppercase font-bold text-accent/70 group-hover:text-accent mt-1.5 tracking-[0.15em] transition-colors whitespace-nowrap text-center">
+                {isDark ? 'Light' : 'Dark'}
+              </span>
+            </div>
             {isClient && userInfo ? (
               <Link href="/dashboard" className="flex flex-col items-center justify-center cursor-pointer group">
                 <User className="w-5 h-5 text-accent group-hover:scale-110 group-hover:text-white transition-all duration-300" strokeWidth={1.5} />

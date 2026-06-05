@@ -1,11 +1,27 @@
 @import "tailwindcss";
 
+:root {
+  --theme-primary: #5C150C;
+  --theme-secondary: #1A1A1A;
+  --theme-accent: #FAF8E1;
+  --theme-cream: #FAF8E1;
+  --theme-white: #F7F4D4;
+}
+
+.dark {
+  --theme-primary: #FAF8E1;
+  --theme-secondary: #E5E5E5;
+  --theme-accent: #5C150C;
+  --theme-cream: #5C150C;
+  --theme-white: #3A0D07;
+}
+
 @theme {
-  --color-primary: #5C150C; /* Exact Dark Maroon */
-  --color-secondary: #1A1A1A; /* Deeper secondary for contrast */
-  --color-accent: #FAF8E1; /* Exact pale background */
-  --color-cream: #FAF8E1; /* Exact pale background */
-  --color-white: #F7F4D4; /* Custom card color */
+  --color-primary: var(--theme-primary);
+  --color-secondary: var(--theme-secondary);
+  --color-accent: var(--theme-accent);
+  --color-cream: var(--theme-cream);
+  --color-white: var(--theme-white);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
