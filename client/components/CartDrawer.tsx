@@ -53,7 +53,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
         {/* Free Shipping Progress Bar */}
         {cart.length > 0 && (
-          <div className="px-5 py-3 bg-pink-50/30 border-b border-gray-100">
+          <div className="px-5 py-3 bg-primary/5 border-b border-gray-100">
             <div className="flex justify-between items-end mb-2">
               <span className="text-xs font-bold text-gray-700">
                 {amountRemaining > 0 
