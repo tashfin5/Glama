@@ -400,7 +400,7 @@ const Header = () => {
 
       {/* Mobile Menu Drawer */}
       <div 
-        className={`fixed top-0 left-0 h-full w-[80%] max-w-sm bg-[#F5DFCA] z-[70] transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${
+        className={`fixed top-0 left-0 h-full w-[80%] max-w-sm bg-cream z-[70] transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${
           isMobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full shadow-none'
         }`}
       >
@@ -415,7 +415,7 @@ const Header = () => {
 
         <div className="flex-1 overflow-y-auto py-6 px-6">
           {/* Mobile Nav Links */}
-          <nav className="flex flex-col space-y-6 text-[13px] font-medium uppercase text-accent tracking-widest">
+          <nav className="flex flex-col space-y-6 text-[13px] font-medium uppercase text-primary tracking-widest">
             {categories.map((cat) => (
               <Link 
                 key={cat.slug}
