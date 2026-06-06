@@ -80,6 +80,28 @@ const getProducts = asyncHandler(async (req, res) => {
     products.sort((a, b) => b.createdAt - a.createdAt);
   }
 
+  if (req.query.admin === 'true') {
+    const allSales = await Order.aggregate([
+      { $unwind: "$orderItems" },
+      { $group: { _id: "$orderItems.product", count: { $sum: "$orderItems.qty" } } }
+    ]);
+    
+    const salesMap = {};
+    allSales.forEach(item => {
+      if (item._id) {
+        salesMap[item._id.toString()] = item.count;
+      }
+    });
+
+    const productsWithSales = products.map(p => {
+      const pObj = p.toObject ? p.toObject() : p;
+      pObj.timesBought = salesMap[p._id.toString()] || 0;
+      return pObj;
+    });
+    
+    return res.json(productsWithSales);
+  }
+
   res.json(products);
 });
 

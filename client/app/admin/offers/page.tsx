@@ -67,19 +67,20 @@ export default function AdminOffersPage() {
                 <th className="p-4">Title</th>
                 <th className="p-4">Status</th>
                 <th className="p-4">Views</th>
+                <th className="p-4">Times Bought</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={4} className="p-10 text-center">
+                  <td colSpan={6} className="p-10 text-center">
                     <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto" />
                   </td>
                 </tr>
               ) : offers.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="p-10 text-center text-gray-500 font-medium">
+                  <td colSpan={6} className="p-10 text-center text-gray-500 font-medium">
                     No offers found. Create your first banner!
                   </td>
                 </tr>
@@ -104,6 +105,7 @@ export default function AdminOffersPage() {
                       )}
                     </td>
                     <td className="p-4 font-semibold text-gray-800">{offer.views || 0}</td>
+                    <td className="p-4 font-semibold text-blue-600">{offer.timesBought || 0}</td>
                     <td className="p-4">
                       <div className="flex justify-end gap-2">
                         <Link 

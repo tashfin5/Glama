@@ -21,7 +21,27 @@ const getActiveOffers = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const getAdminOffers = asyncHandler(async (req, res) => {
   const offers = await Offer.find({}).sort({ createdAt: -1 });
-  res.json(offers);
+
+  const Order = require('../models/Order');
+  const offerSales = await Order.aggregate([
+    { $unwind: "$discounts" },
+    { $group: { _id: "$discounts.offerId", count: { $sum: 1 } } }
+  ]);
+
+  const salesMap = {};
+  offerSales.forEach(item => {
+    if (item._id) {
+      salesMap[item._id.toString()] = item.count;
+    }
+  });
+
+  const offersWithSales = offers.map(o => {
+    const oObj = o.toObject ? o.toObject() : o;
+    oObj.timesBought = salesMap[o._id.toString()] || 0;
+    return oObj;
+  });
+
+  res.json(offersWithSales);
 });
 
 // @desc    Get offer by ID

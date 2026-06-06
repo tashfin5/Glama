@@ -24,7 +24,7 @@ export default function AdminProductsPage() {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?admin=true`);
       setProducts(data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -99,20 +99,21 @@ export default function AdminProductsPage() {
                 <th className="p-4">Price</th>
                 <th className="p-4">Stock</th>
                 <th className="p-4">Views</th>
+                <th className="p-4">Times Bought</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-gray-500">Loading products...</td>
+                  <td colSpan={7} className="p-8 text-center text-gray-500">Loading products...</td>
                 </tr>
               ) : products.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="p-8 text-center text-gray-500">No products found.</td>
+                  <td colSpan={7} className="p-8 text-center text-gray-500">No products found.</td>
                 </tr>
               ) : (
-                products.map((product) => (
+                products.map((product: any) => (
                   <tr key={product._id} className="hover:bg-gray-50 transition-colors group text-sm">
                     <td className="p-4 flex items-center gap-3">
                       <div className="w-10 h-10 bg-gray-100 rounded border border-gray-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
@@ -135,6 +136,7 @@ export default function AdminProductsPage() {
                       </div>
                     </td>
                     <td className="p-4 font-medium text-gray-800">{product.views || 0}</td>
+                    <td className="p-4 font-medium text-blue-600">{product.timesBought || 0}</td>
                     <td className="p-4">
                       <div className="flex items-center justify-end gap-2 md:opacity-0 group-hover:opacity-100 transition-opacity">
                         <Link href={`/admin/products/edit/${product._id}`} className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"><Edit className="w-4 h-4" /></Link>
