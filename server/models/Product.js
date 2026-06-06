@@ -24,7 +24,8 @@ const productSchema = new mongoose.Schema({
   tags: { type: [String], default: [] },
   reviews: [reviewSchema],
   rating: { type: Number, required: true, default: 0 },
-  numReviews: { type: Number, required: true, default: 0 }
+  numReviews: { type: Number, required: true, default: 0 },
+  views: { type: Number, default: 0 }
 }, { timestamps: true });
 
 // Auto-generate slug before saving

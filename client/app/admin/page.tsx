@@ -18,18 +18,36 @@ interface OrderStats {
   }>;
 }
 
+interface ViewStats {
+  totalViews: number;
+  breakdown: {
+    products: number;
+    categories: number;
+    brands: number;
+    offers: number;
+    mainSite: number;
+  };
+}
+
 export default function AdminDashboard() {
   const [stats, setStats] = useState<OrderStats | null>(null);
+  const [viewStats, setViewStats] = useState<ViewStats | null>(null);
   const [loading, setLoading] = useState(true);
   const { userInfo } = useAdminAuthStore();
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/stats`, {
-          headers: { Authorization: `Bearer ${userInfo?.token}` }
-        });
-        setStats(data);
+        const [{ data: orderData }, { data: viewData }] = await Promise.all([
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/orders/stats`, {
+            headers: { Authorization: `Bearer ${userInfo?.token}` }
+          }),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/stats`, {
+            headers: { Authorization: `Bearer ${userInfo?.token}` }
+          })
+        ]);
+        setStats(orderData);
+        setViewStats(viewData);
       } catch (error) {
         console.error('Error fetching stats:', error);
       } finally {
@@ -46,13 +64,14 @@ export default function AdminDashboard() {
     { title: "Total Revenue", value: `৳${stats?.totalRevenue.toFixed(2) || '0.00'}`, icon: <DollarSign className="w-6 h-6 text-green-500" /> },
     { title: "Total Orders", value: stats?.totalOrders || '0', icon: <ShoppingBag className="w-6 h-6 text-blue-500" /> },
     { title: "Total Customers", value: stats?.totalCustomers || '0', icon: <Users className="w-6 h-6 text-purple-500" /> },
+    { title: "Total Views", value: viewStats?.totalViews || '0', icon: <TrendingUp className="w-6 h-6 text-orange-500" /> },
   ];
 
   return (
     <div className="space-y-6">
       
       {/* Top Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((stat, index) => (
           <div key={index} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex items-start justify-between">
             <div>
@@ -64,6 +83,30 @@ export default function AdminDashboard() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Views Breakdown */}
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
+          <p className="text-xs text-gray-500 uppercase">Main Website</p>
+          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.mainSite || 0}</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
+          <p className="text-xs text-gray-500 uppercase">Products</p>
+          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.products || 0}</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
+          <p className="text-xs text-gray-500 uppercase">Categories</p>
+          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.categories || 0}</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
+          <p className="text-xs text-gray-500 uppercase">Brands</p>
+          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.brands || 0}</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
+          <p className="text-xs text-gray-500 uppercase">Offers</p>
+          <p className="text-xl font-bold">{loading ? '...' : viewStats?.breakdown?.offers || 0}</p>
+        </div>
       </div>
 
       {/* Recent Orders Table */}

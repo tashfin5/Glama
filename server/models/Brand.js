@@ -5,7 +5,8 @@ const brandSchema = new mongoose.Schema({
   slug: { type: String, required: true, unique: true },
   image: { type: String, default: '' },
   description: { type: String, default: '' },
-  isFeatured: { type: Boolean, default: false }
+  isFeatured: { type: Boolean, default: false },
+  views: { type: Number, default: 0 }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Brand', brandSchema);

@@ -22,6 +22,8 @@ const getBrandById = asyncHandler(async (req, res) => {
   }
 
   if (brand) {
+    brand.views = (brand.views || 0) + 1;
+    await brand.save();
     res.json(brand);
   } else {
     res.status(404);

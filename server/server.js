@@ -15,6 +15,7 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const offerRoutes = require('./routes/offerRoutes');
 const brandRoutes = require('./routes/brandRoutes');
+const statsRoutes = require('./routes/statsRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 // Connect to database
@@ -34,6 +35,7 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/offers', offerRoutes);
 app.use('/api/brands', brandRoutes);
+app.use('/api/stats', statsRoutes);
 
 // Basic test route
 app.get('/', (req, res) => {

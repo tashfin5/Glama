@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Marcellus } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
+import SiteTracker from '../components/SiteTracker';
 
 const outfit = Outfit({ 
   subsets: ["latin"], 
@@ -43,6 +44,7 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable} ${marcellus.variable} font-sans antialiased flex flex-col min-h-screen bg-cream text-primary`}>
         <Toaster position="top-center" toastOptions={{ duration: 3000, style: { background: '#333', color: '#fff' } }} />
+        <SiteTracker />
         {children}
       </body>
     </html>
