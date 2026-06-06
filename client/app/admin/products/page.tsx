@@ -99,7 +99,7 @@ export default function AdminProductsPage() {
                 <th className="p-4">Price</th>
                 <th className="p-4">Stock</th>
                 <th className="p-4">Views</th>
-                <th className="p-4">Times Bought</th>
+                <th className="p-4">Sold</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
             </thead>

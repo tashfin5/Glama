@@ -67,7 +67,7 @@ export default function AdminOffersPage() {
                 <th className="p-4">Title</th>
                 <th className="p-4">Status</th>
                 <th className="p-4">Views</th>
-                <th className="p-4">Times Bought</th>
+                <th className="p-4">Sold</th>
                 <th className="p-4 text-right">Actions</th>
               </tr>
             </thead>
