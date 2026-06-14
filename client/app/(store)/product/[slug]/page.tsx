@@ -335,7 +335,7 @@ export default function ProductDetails() {
           <div className="p-8 lg:p-12">
             {activeTab === 'description' && (
               <div className="max-w-4xl animate-in fade-in duration-500">
-                <p className="text-gray-600 leading-[1.8] text-base mb-6">
+                <p className="text-gray-600 leading-[1.8] text-base mb-6 whitespace-pre-wrap">
                   {product.description}
                 </p>
               </div>

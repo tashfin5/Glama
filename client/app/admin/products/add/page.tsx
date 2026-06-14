@@ -58,11 +58,8 @@ export default function AddProductPage() {
 
   // Handle Cloudinary Image Upload
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append('image', file);
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
 
     setUploading(true);
     try {
@@ -73,8 +70,16 @@ export default function AddProductPage() {
         },
       };
 
-      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
-      setImages([...images, data.url]);
+      const uploadPromises = files.map(file => {
+        const formData = new FormData();
+        formData.append('image', file);
+        return axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload`, formData, config);
+      });
+
+      const responses = await Promise.all(uploadPromises);
+      const newUrls = responses.map(res => res.data.url);
+      
+      setImages(prev => [...prev, ...newUrls]);
     } catch (error) {
       console.error('Image upload failed', error);
       toast.error('Image upload failed. Ensure backend has Cloudinary credentials.');
@@ -224,7 +229,7 @@ export default function AddProductPage() {
             <h2 className="text-lg font-bold text-gray-900 border-b pb-2">Product Images</h2>
             
             <label className="border-2 border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 hover:border-primary transition-colors group">
-              <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={uploading} />
+              <input type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} disabled={uploading} />
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-pink-100 transition-colors">
                 {uploading ? <Loader2 className="w-6 h-6 text-primary animate-spin" /> : <UploadCloud className="w-6 h-6 text-gray-500 group-hover:text-primary" />}
               </div>
